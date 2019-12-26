@@ -19,70 +19,25 @@ function queryFromUserByAgeBetween(arr, start, end) {
     })
 }
 
-// Sort By FirstName
-function sortByFirstNameService(arr) {
-    return arr.sort(compareFirstName);
+function compareValues(key, order = 'asc') {
+    return function innerSort(a, b) {
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+            return 0;
+        }
+
+        const varA = (typeof a[key] === 'string' && !isDate(a[key])) ?
+            a[key].toUpperCase() : (typeof a[key] === 'string' && isDate(a[key]) ? new Date(a[key]).getTime() : parseInt(a[key]));
+        const varB = (typeof b[key] === 'string' && !isDate(b[key])) ?
+            b[key].toUpperCase() : (typeof b[key] === 'string' && !isDate(b[key]) ? new Date(b[key]).getTime() : parseInt(b[key]));
+
+        let comparison = 0;
+        if (varA > varB) {
+            comparison = 1;
+        } else if (varA < varB) {
+            comparison = -1;
+        }
+        return (
+            (order === 'desc') ? (comparison * -1) : comparison
+        );
+    };
 }
-
-// Sort By Last Name
-function sortByLastNameService(arr) {
-    return arr.sort(compareLastName);
-}
-
-// Sort By Salary
-function sortBySalaryService(arr) {
-    return arr.sort((a, b) => a.salary - b.salary);
-}
-
-// Sort By Age
-function sortByAgeService(arr) {
-    return arr.sort(compareDates);
-}
-// function sortByAgeService(arr) {
-//     return arr.sort((a, b) => {
-//         new Date(a.DOB).getTime() - new Date(b.DOB).getTime();
-//     });
-// }
-
-function sortGeneric(data, key) {
-    console.log(typeof data[0][key]);
-    if (typeof data[0][key] === 'string') {
-        console.log(data[0][key]);
-        return data.sort((a, b) => a[key].localeCompare(b[key]));
-    } else if (typeof data[0][key] === 'number') {
-        return data.sort((a, b) => a[key] - b[key]);
-    }
-}
-
-
-
-
-// if (typeof data[0][key] === 'string') {
-//     data.sort(
-//         (item1, item2) => {
-//             if (item1[key] < item2[key])
-//                 return -1;
-//             if (item1[key] > item2[key])
-//                 return 1;
-//             return 0;
-//         })
-// }
-//         })    }
-//      else if (typeof key === 'string') {
-//     data.sort(
-//         (item1, item2) => {
-//             if (item1[key] < item2[key])
-//                 return -1;
-//             if (item1[key] > item2[key])
-//                 return 1;
-//             return 0;
-//         })
-// } else if (typeof key === 'object') {
-//     (item1, item2) => {
-//         if (new Date(item1.DOB).getTime() < new Date(item2.DOB).getTime())
-//             return -1;
-//         if (new Date(item1.DOB).getTime() > new Date(item2.DOB).getTime())
-//             return 1;
-//         return 0;
-//     }
-// }

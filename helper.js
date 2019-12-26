@@ -23,3 +23,8 @@ function compareDates(item1, item2) {
         return 1;
     return 0;
 }
+
+function isDate(s) {
+    if (isNaN(s) && !isNaN(Date.parse(s))) return true;
+    else return false;
+}

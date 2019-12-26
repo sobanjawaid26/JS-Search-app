@@ -100,11 +100,11 @@ const users = [
 ];
 
 function makeTable(arr) {
-    var html = `<table><thead><tr><td><button onclick="sortByFirstName()">First Name</button></td>` +
-        `<td><button onclick="sortByLastName()">Last Name</button></td>` +
-        `<td><button onclick="sortByAge()">Age</button></td>` +
-        `<td><button onclick="sortByAge()">DOB</button></td>` +
-        `<td><button onclick="sortBySalary()">Salary</button></td>` +
+    var html = `<table><thead><tr><td><button id= "firstName" name = "firstName" onclick="genericSort(this.id)">First Name</button></td>` +
+        `<td><button id = "lastName" name = "lastName" onclick="genericSort(this.id)">Last Name</button></td>` +
+        `<td><button id = "DOB" name = "DOB" onclick="genericSort(this.id)">Age</button></td>` +
+        `<td><button id = "DOB" name = "DOB" onclick="genericSort(this.id)">DOB</button></td>` +
+        `<td><button id = "salary" name = "salary" onclick="genericSort(this.id)">Salary</button></td>` +
         `<td>Phone Number</td></tr></thead><tbody>`;
     arr.forEach(element => {
         html += "<tr><td>" + element.firstName + "</td><td>" + element.lastName + "</td><td>" + (new Date().getFullYear() - new Date(element.DOB).getFullYear()) + "</td><td>" + element.DOB +
@@ -128,68 +128,12 @@ function searchByAgeBetween() {
     var resultByAgeBetween = queryFromUserByAgeBetween(users, document.getElementById('startAge').value, document.getElementById('endAge').value);
     // console.log(resultByAgeBetween);
     makeTable(resultByAgeBetween);
+};
+console.log(users.sort(compareValues('DOB')));
+
+function genericSort(id) {
+    const key = document.getElementById(id).getAttribute('name');
+    console.log(key);
+    const sortedData = users.sort(compareValues(key));
+    makeTable(sortedData);
 }
-
-
-console.log(sortGeneric(users, 'firstName'));
-console.log(sortGeneric(users, 'lastName'));
-// console.log(sortGeneric(users, 'salary'));
-// console.log(sortGeneric(users, 'DOB'));
-
-// function sortByFirstName() {
-//     if (isFnRev) {
-//         var sortByFirstNameData = sortByFirstNameService(users);
-//         console.log(sortByFirstNameData);
-//         makeTable(sortByFirstNameData);
-//         isFnRev = false;
-//     } else {
-//         var sortByFirstNameData = sortByFirstNameService(users).reverse();
-//         console.log(sortByFirstNameData);
-//         makeTable(sortByFirstNameData);
-//         isFnRev = true;
-//     }
-
-// }
-
-// function sortByLastName() {
-//     if (isLnRev) {
-//         var sortByLastNameData = sortByLastNameService(users);
-//         console.log(sortByLastNameData);
-//         makeTable(sortByLastNameData);
-//         isLnRev = false;
-//     } else {
-//         var sortByLastNameData = sortByLastNameService(users).reverse();
-//         console.log(sortByLastNameData);
-//         makeTable(sortByLastNameData);
-//         isLnRev = true;
-//     }
-// }
-
-// function sortBySalary() {
-//     if (isSalaryRev) {
-//         var sortBySalaryData = sortBySalaryService(users);
-//         console.log(sortBySalaryData);
-//         makeTable(sortBySalaryData);
-//         isSalaryRev = false;
-//     } else {
-//         var sortBySalaryData = sortBySalaryService(users).reverse();
-//         console.log(sortBySalaryData);
-//         makeTable(sortBySalaryData);
-//         isSalaryRev = true;
-//     }
-
-// }
-
-// function sortByAge() {
-//     if (isAgeRev) {
-//         var sortByAgeData = sortByAgeService(users);
-//         console.log(sortByAgeData);
-//         makeTable(sortByAgeData);
-//         isAgeRev = false;
-//     } else {
-//         var sortByAgeData = sortByAgeService(users).reverse();
-//         console.log(sortByAgeData);
-//         makeTable(sortByAgeData);
-//         isAgeRev = true;
-//     }
-// }
