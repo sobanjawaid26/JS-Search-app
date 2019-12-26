@@ -1,3 +1,7 @@
+var isFnRev = true,
+    isLnRev = false,
+    isAgeRev = false,
+    isSalaryRev = false;
 class Users {
     constructor(firstName, lastName, DOB, salary, phoneNo) {
         this.firstName = firstName;
@@ -126,52 +130,66 @@ function searchByAgeBetween() {
     makeTable(resultByAgeBetween);
 }
 
-function sortByFirstName() {
-    var sortByFirstNameData = sortByFirstNameService(users);
-    console.log(sortByFirstNameData);
-    makeTable(sortByFirstNameData);
-}
 
-function sortByLastName() {
-    var sortByLastNameData = sortByLastNameService(users);
-    console.log(sortByLastNameData);
-    makeTable(sortByLastNameData);
-}
+console.log(sortGeneric(users, 'firstName'));
+console.log(sortGeneric(users, 'lastName'));
+// console.log(sortGeneric(users, 'salary'));
+// console.log(sortGeneric(users, 'DOB'));
 
-function sortBySalary() {
-    var sortBySalaryData = sortBySalaryService(users);
-    console.log(sortBySalaryData);
-    makeTable(sortBySalaryData);
-}
+// function sortByFirstName() {
+//     if (isFnRev) {
+//         var sortByFirstNameData = sortByFirstNameService(users);
+//         console.log(sortByFirstNameData);
+//         makeTable(sortByFirstNameData);
+//         isFnRev = false;
+//     } else {
+//         var sortByFirstNameData = sortByFirstNameService(users).reverse();
+//         console.log(sortByFirstNameData);
+//         makeTable(sortByFirstNameData);
+//         isFnRev = true;
+//     }
 
-function sortByAge() {
-    var sortByAgeData = sortByAgeService(users);
-    console.log(sortByAgeData);
-    makeTable(sortByAgeData);
-}
-// // Search By Name
-// var resultByName = queryFromUsersByName(users, 's');
-// console.log(resultByName);
+// }
 
-// // Search By Age
-// var resultByAge = queryFromUserByAge(users, 25);
-// console.log(resultByAge);
+// function sortByLastName() {
+//     if (isLnRev) {
+//         var sortByLastNameData = sortByLastNameService(users);
+//         console.log(sortByLastNameData);
+//         makeTable(sortByLastNameData);
+//         isLnRev = false;
+//     } else {
+//         var sortByLastNameData = sortByLastNameService(users).reverse();
+//         console.log(sortByLastNameData);
+//         makeTable(sortByLastNameData);
+//         isLnRev = true;
+//     }
+// }
 
-// // Search By Age Between
-// var resultByAgeBetween = queryFromUserByAgeBetween(users, 20, 30);
-// console.log(resultByAgeBetween);
+// function sortBySalary() {
+//     if (isSalaryRev) {
+//         var sortBySalaryData = sortBySalaryService(users);
+//         console.log(sortBySalaryData);
+//         makeTable(sortBySalaryData);
+//         isSalaryRev = false;
+//     } else {
+//         var sortBySalaryData = sortBySalaryService(users).reverse();
+//         console.log(sortBySalaryData);
+//         makeTable(sortBySalaryData);
+//         isSalaryRev = true;
+//     }
 
-// // Sort By FirstName
-// var sortByFirstName = sortByFirstName(users);
-// console.log(sortByFirstName);
+// }
 
-// // Sort By Last Name
-// var sortByLastName = sortByLastName(users);
-// console.log(sortByLastName);
-
-// // Sort By Salary
-// var sortBySalary = sortBySalary(users);
-// console.log(sortBySalary);
-
-console.log(new Date(users[0].DOB).getTime());
-console.log(new Date(users[1].DOB).getTime());
+// function sortByAge() {
+//     if (isAgeRev) {
+//         var sortByAgeData = sortByAgeService(users);
+//         console.log(sortByAgeData);
+//         makeTable(sortByAgeData);
+//         isAgeRev = false;
+//     } else {
+//         var sortByAgeData = sortByAgeService(users).reverse();
+//         console.log(sortByAgeData);
+//         makeTable(sortByAgeData);
+//         isAgeRev = true;
+//     }
+// }

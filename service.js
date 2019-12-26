@@ -43,3 +43,46 @@ function sortByAgeService(arr) {
 //         new Date(a.DOB).getTime() - new Date(b.DOB).getTime();
 //     });
 // }
+
+function sortGeneric(data, key) {
+    console.log(typeof data[0][key]);
+    if (typeof data[0][key] === 'string') {
+        console.log(data[0][key]);
+        return data.sort((a, b) => a[key].localeCompare(b[key]));
+    } else if (typeof data[0][key] === 'number') {
+        return data.sort((a, b) => a[key] - b[key]);
+    }
+}
+
+
+
+
+// if (typeof data[0][key] === 'string') {
+//     data.sort(
+//         (item1, item2) => {
+//             if (item1[key] < item2[key])
+//                 return -1;
+//             if (item1[key] > item2[key])
+//                 return 1;
+//             return 0;
+//         })
+// }
+//         })    }
+//      else if (typeof key === 'string') {
+//     data.sort(
+//         (item1, item2) => {
+//             if (item1[key] < item2[key])
+//                 return -1;
+//             if (item1[key] > item2[key])
+//                 return 1;
+//             return 0;
+//         })
+// } else if (typeof key === 'object') {
+//     (item1, item2) => {
+//         if (new Date(item1.DOB).getTime() < new Date(item2.DOB).getTime())
+//             return -1;
+//         if (new Date(item1.DOB).getTime() > new Date(item2.DOB).getTime())
+//             return 1;
+//         return 0;
+//     }
+// }
