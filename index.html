@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Management</h1>
+        <h3>List Of Employees</h3>
+        <form onsubmit="return false">
+            <input id="searchQuery" type="text">
+            <button  onclick="showDataByName()">Search By Name</button>
+        </form>
+        </br>
+        <form onsubmit="return false">
+            <input id="startAge" type="text">
+            <input id="endAge" type="text">
+            <button onclick="searchByAgeBetween()">Search By Age</button>
+        </form>
+        </br>
+        <div id="myTable"></div>
+    </div>
+</body>
+<footer>
+    <script src="helper.js"></script>
+    <script src="service.js"></script>
+    <script src="app.js"></script>
+</footer>
+</html>

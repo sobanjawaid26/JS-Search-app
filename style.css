@@ -1,0 +1,7 @@
+h1, h3 {
+    text-align: centre;
+}
+table, th, td {
+    border: 1px solid black;
+    width: 60%;
+  }
