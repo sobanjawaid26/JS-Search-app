@@ -17,9 +17,9 @@ function compareLastName(item1, item2) {
 
 // compare to Dates
 function compareDates(item1, item2) {
-    if (new Date(item1.DOB).getTime() < new Date(item2.DOB).getTime())
+    if (new Date(item1).getTime() < new Date(item2).getTime())
         return -1;
-    if (new Date(item1.DOB).getTime() > new Date(item2.DOB).getTime())
+    if (new Date(item1).getTime() > new Date(item2).getTime())
         return 1;
     return 0;
 }

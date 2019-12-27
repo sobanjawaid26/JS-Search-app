@@ -134,7 +134,8 @@ console.log(users.sort(compareValues('lastName')));
 
 function genericSort(id) {
     const key = document.getElementById(id).getAttribute('name');
-    console.log(key);
+    console.log(typeof users[0][key]);
     const sortedData = users.sort(compareValues(key));
+    console.log(sortedData);
     makeTable(sortedData);
 }

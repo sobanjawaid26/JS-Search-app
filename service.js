@@ -24,20 +24,14 @@ function compareValues(key, order = 'asc') {
         if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
             return 0;
         }
+        const varA = a[key];
+        const varB = b[key];
+        if (typeof varA === 'object' && typeof varA === 'object') {
+            return compareDates(varA, varB);
+        } else if (typeof varA === 'string' && typeof varB === 'string') {
+            return varA.localeCompare(varB);
+        } else return varA - varB;
 
-        const varA = (typeof a[key] === 'string' && !isDate(a[key])) ?
-            a[key].toUpperCase() : (typeof a[key] === 'string' && isDate(a[key]) ? new Date(a[key]).getTime() : parseInt(a[key]));
-        const varB = (typeof b[key] === 'string' && !isDate(b[key])) ?
-            b[key].toUpperCase() : (typeof b[key] === 'string' && !isDate(b[key]) ? new Date(b[key]).getTime() : parseInt(b[key]));
 
-        let comparison = 0;
-        if (varA > varB) {
-            comparison = 1;
-        } else if (varA < varB) {
-            comparison = -1;
-        }
-        return (
-            (order === 'desc') ? (comparison * -1) : comparison
-        );
     };
 }
